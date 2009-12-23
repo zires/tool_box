@@ -6,8 +6,50 @@ Introduction goes here.
 
 Example
 =======
+1) extend Hash
+    1,cut!(arg)
+    #  {"a" => 100, "b" => 200, "c" => 300}.cut! {"b" => 300, "c" => 300} #=> {"a" =>100}
+    #  or .cut! "a"                                                       #=> {"b" => 200, "c" => 300}
+    #  or .cut! {"d" => 300}                                              #=> {"a" => 100, "b" => 200, "c" => 300}
+    #  or .cut! ["a","b"]                                                 #=> {"c" => 300}
 
-Example goes here.
+    2,draw_out(arg)
+    #{"a" => 100, "b" => 200}.draw_out("a")                               #=> {"a" => 100 }
+    #or .draw_out(["a","b","c"])                                          #=> {"a" => 100, "b" => 200}
+
+2) extend ActionView::Helpers
+    1,image_link(src,url,*args)
+    # <%= image_link("image.jpg",{:controller => 'photo',:action => 'show'}/url_path,{:width => '90'},{:id => 'link'})   
+                %>
+              #=> <a href="/photo/show/id" id="link"><image src="images/image.jpg" width='90'></a>
+    
+    2,table_for(*args,&proc)
+    # <% table_for(:caption=>'caption',:col => 'col',:colgroup => 'colgroup',:id => 'table') do %>
+      <% t_tr :id => 'ttr' do %>
+        <%= t_th("tool")%>
+        <%= t_td("box",:class => "hello")%>
+      <% end %>
+      <% tr(2,{:class => "world"},["one","two",true],["o","t"])%>
+      <% end %>
+      
+            #=><table id='table'>
+               <caption>caption</caption>
+               <col :id=>"col"></col>
+               <colgroup :id=>"colgroup"></colgroup>
+               <tr id="ttr">
+                 <th>tool</th>
+                 <td :class => "hello">box<td>
+               </tr>
+               <tr :class => "world">
+                 <th>one</th>
+                 <td>two</td>
+               </tr>
+               <tr :class => "world">
+                 <td>o</td>
+                 <td>t</td>
+               </tr>
+               </table>
 
 
-Copyright (c) 2009 [name of plugin creator], released under the MIT license
+
+Copyright (c) 2009 [zshuaibin], released under the MIT license
