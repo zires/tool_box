@@ -42,7 +42,7 @@ Example
                </tr>
                <tr :class => "world">
                  <th>one</th>
-                 <td>two</td>
+                 <th>two</th>
                </tr>
                <tr :class => "world">
                  <td>o</td>

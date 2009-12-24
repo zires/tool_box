@@ -76,7 +76,7 @@ module	ToolHelpers
 		# <%= tr(2,:class => "haha",["one","two",true],["o","t"])%> #=>
 		#	<tr class="haha">
 		#		<th>one</th>
-		#		<td>two</td>
+		#		<th>two</th>
 		#	</tr>
 		#	<tr class="haha">
 		#		<td>o</td>
@@ -88,12 +88,10 @@ module	ToolHelpers
 			row.times do |i|
 				concat(tag("tr",options,true) + "\n")
 				if arrays[i].last == true
-					concat(eval("t_th('#{arrays[i][0]}')"))
-					concat("\n")
-					num = arrays[i].size - 1
-					array = arrays[i][1...num]
+          num = arrays[i].size - 1
+					array = arrays[i][0...num]
 					array.each do |tcontent|
-						concat(eval("t_td(tcontent)"))
+						concat(eval("t_th(tcontent)"))
 						concat("\n")
 					end
 				else
