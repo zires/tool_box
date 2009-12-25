@@ -59,8 +59,8 @@ module	ToolHelpers
 		end
 		
 		# <% t_tr do %>
-		#	<%= t_th("head")%>
-		#	<%= t_td('haha',:id => "haha")%>
+		#	<% t_th("head")%>
+		#	<% t_td('haha',:id => "haha")%>
 		# <% end %>
 		#	##=>  <tr>
 		#			<th>head</th>
@@ -91,12 +91,12 @@ module	ToolHelpers
           num = arrays[i].size - 1
 					array = arrays[i][0...num]
 					array.each do |tcontent|
-						concat(eval("t_th(tcontent)"))
+						eval("t_th(tcontent)")
 						concat("\n")
 					end
 				else
 					arrays[i].each do |tcontent|
-						concat(eval("t_td(tcontent)"))
+						eval("t_td(tcontent)")
 						concat("\n")
 					end
 				end
@@ -131,14 +131,10 @@ module	ToolHelpers
 		
 		
 		def create_tag(tag_type,tcontent,options)
-			if tcontent.instance_of? String
-				tcontent ||= ""
-			else
-				raise ArgumentError,"the value of column must be string"
-			end
-			tag(tag_type,options,true) +
-			"\n" + tcontent +
-			"</#{tag_type}>"
+			concat(tag(tag_type,options,true))
+			concat("\n")
+      concat(tcontent)
+			concat("</#{tag_type}>")
 		end
 		
 #******************************************************************************************

@@ -26,8 +26,8 @@ Example
     2,table_for(*args,&proc)
     # <% table_for(:caption=>'caption',:col => 'col',:colgroup => 'colgroup',:id => 'table') do %>
       <% t_tr :id => 'ttr' do %>
-        <%= t_th("tool")%>
-        <%= t_td("box",:class => "hello")%>
+        <% t_th("tool")%>
+        <% t_td("box",:class => "hello")%>
       <% end %>
       <% tr(2,{:class => "world"},["one","two",true],["o","t"])%>
       <% end %>
