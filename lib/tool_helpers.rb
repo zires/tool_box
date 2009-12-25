@@ -88,7 +88,7 @@ module	ToolHelpers
 			row.times do |i|
 				concat(tag("tr",options,true) + "\n")
 				if arrays[i].last == true
-          num = arrays[i].size - 1
+                                        num = arrays[i].size - 1
 					array = arrays[i][0...num]
 					array.each do |tcontent|
 						eval("t_th(tcontent)")
